@@ -1,0 +1,48 @@
+# Deployment for the showcase postgres database
+apiVersion: v1
+data:
+  postgrespass: cGFzcwo=
+kind: Secret
+metadata:
+  name: showcase-postgresql
+type: Opaque
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showcase-postgresql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: showcase-postgresql
+  template:
+    metadata:
+      labels:
+        app: showcase-postgresql
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: postgrespass
+                  name: showcase-postgresql
+          image: postgres:13.4-alpine3.14
+          imagePullPolicy: Always
+          name: showcase-postgresql
+          ports:
+            - containerPort: 5432
+              name: tcp
+              protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: showcase-postgresql
+spec:
+  selector:
+    app: showcase-postgresql
+  ports:
+    - port: 5432
+  type: ClusterIP

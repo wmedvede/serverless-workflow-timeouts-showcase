@@ -1,0 +1,21 @@
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: data-index-mock-job-event-trigger
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: JobEvent
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: data-index-mock
+    uri: /jobs
+---
+apiVersion: eventing.knative.dev/v1
+kind: Broker
+metadata:
+  name: default
