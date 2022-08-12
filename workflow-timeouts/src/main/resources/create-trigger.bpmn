@@ -19,7 +19,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_46F9DE13-1E13-4A5B-BE34-903237931DCC</bpmn2:incoming>
       <bpmn2:outgoing>_571DA68D-D41E-4FD1-ABC1-1C91BFF1661C</bpmn2:outgoing>
-      <bpmn2:script>System.out.println(java.time.ZonedDateTime.now() + " - create_trigger.Script2, CREATE JOB event was produced, processId: " + kcontext.getProcessInstance().getStringId());</bpmn2:script>
+      <bpmn2:script>System.out.println(java.time.ZonedDateTime.now() + " - create_trigger.Script2 executed, CREATE JOB event was produced and the timer was fired for processId: " + kcontext.getProcessInstance().getStringId());</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:intermediateCatchEvent id="_17300FDB-95F2-4522-8655-D18863FEC77A" name="TheTimerNode">
       <bpmn2:extensionElements>
@@ -30,7 +30,7 @@
       <bpmn2:incoming>_4AA91B59-903B-4098-BD86-5519EAA7508D</bpmn2:incoming>
       <bpmn2:outgoing>_46F9DE13-1E13-4A5B-BE34-903237931DCC</bpmn2:outgoing>
       <bpmn2:timerEventDefinition>
-        <bpmn2:timeDuration xsi:type="bpmn2:tFormalExpression">PT30S</bpmn2:timeDuration>
+        <bpmn2:timeDuration xsi:type="bpmn2:tFormalExpression">PT15S</bpmn2:timeDuration>
       </bpmn2:timerEventDefinition>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:scriptTask id="_5E90BF6A-A373-45EA-A2C4-4A72CF067D5D" name="Script1" scriptFormat="http://www.java.com/java">
@@ -41,7 +41,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_9D3FAB6A-B3BF-4069-B2C7-EC58137AA046</bpmn2:incoming>
       <bpmn2:outgoing>_4AA91B59-903B-4098-BD86-5519EAA7508D</bpmn2:outgoing>
-      <bpmn2:script>System.out.println(java.time.ZonedDateTime.now() + " - create_trigger.Script1, about to produce CREATE JOB event, processId: " + kcontext.getProcessInstance().getStringId());</bpmn2:script>
+      <bpmn2:script>System.out.println(java.time.ZonedDateTime.now() + " - create_trigger.Script1 executed, about to produce CREATE JOB event for processId: " + kcontext.getProcessInstance().getStringId());</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:startEvent id="_68D8AA50-1C4B-4290-929F-47F8711BA69B">
       <bpmn2:outgoing>_9D3FAB6A-B3BF-4069-B2C7-EC58137AA046</bpmn2:outgoing>

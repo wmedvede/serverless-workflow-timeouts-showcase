@@ -2,7 +2,7 @@
   "id": "switch_state_timeouts",
   "name": "Switch State Timeouts Test",
   "version": "1.0",
-  "start": "ChooseOnEvent",
+  "start": "PrintStartMessage",
   "events": [
     {
       "name": "visaApprovedEvent",
@@ -20,7 +20,30 @@
       "type": "process_result_event"
     }
   ],
+  "functions": [
+    {
+      "name": "systemOut",
+      "type": "custom",
+      "operation": "sysout"
+    }
+  ],
   "states": [
+    {
+      "name": "PrintStartMessage",
+      "type": "operation",
+      "actions": [
+        {
+          "name": "printSystemOut",
+          "functionRef": {
+            "refName": "systemOut",
+            "arguments": {
+              "message": "\"switch-state-timeouts: has started.\""
+            }
+          }
+        }
+      ],
+      "transition" : "ChooseOnEvent"
+    },
     {
       "name": "ChooseOnEvent",
       "type": "switch",
@@ -73,6 +96,15 @@
       "name": "HandleNoVisaDecision",
       "type": "operation",
       "actions": [
+        {
+          "name": "printSystemOut",
+          "functionRef": {
+            "refName": "systemOut",
+            "arguments": {
+              "message": "\"switch-state-timeouts: has finished. The switch state timeout has elapsed.\""
+            }
+          }
+        },
         {
           "name": "sendNoDecisionResult",
           "eventRef": {

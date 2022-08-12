@@ -17,7 +17,16 @@ package org.kie.kogito.examples;
 
 import javax.enterprise.context.ApplicationScoped;
 
-@ApplicationScoped
-public class HelloService extends AbstractHelloService {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+@ApplicationScoped
+public class HelloService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelloService.class);
+
+    public String helloJson(String input) {
+        LOGGER.info("Executing {}.helloJson(\"{}\")", getClass().getName(), input);
+        return "{\"answer\" : \"Hello " + input + "\"}";
+    }
 }

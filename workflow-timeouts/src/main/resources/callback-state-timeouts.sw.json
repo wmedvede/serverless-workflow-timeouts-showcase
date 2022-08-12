@@ -2,9 +2,8 @@
   "id": "callback_state_timeouts",
   "version": "1.0",
   "name": "Callback State Timeouts",
-  "expressionLang": "jsonpath",
   "description": "Callback State Timeouts Test",
-  "start": "CallbackState",
+  "start": "PrintStartMessage",
   "events": [
     {
       "name": "callbackEvent",
@@ -26,9 +25,30 @@
         "operation": "helloJson",
         "type": "service"
       }
+    },
+    {
+      "name": "systemOut",
+      "type": "custom",
+      "operation": "sysout"
     }
   ],
   "states": [
+    {
+      "name": "PrintStartMessage",
+      "type": "operation",
+      "actions": [
+        {
+          "name": "printSystemOut",
+          "functionRef": {
+            "refName": "systemOut",
+            "arguments": {
+              "message": "\"callback-state-timeouts: has started.\""
+            }
+          }
+        }
+      ],
+      "transition": "CallbackState"
+    },
     {
       "name": "CallbackState",
       "type": "callback",
@@ -59,6 +79,22 @@
       "data": {
         "lastExecutedState": "FinalizeSuccessful"
       },
+      "transition": "PrintEndMessage"
+    },
+    {
+      "name": "PrintEndMessage",
+      "type": "operation",
+      "actions": [
+        {
+          "name": "printSystemOut",
+          "functionRef": {
+            "refName": "systemOut",
+            "arguments": {
+              "message": "\"callback-state-timeouts: has finished. The callback state timeout has elapsed.\""
+            }
+          }
+        }
+      ],
       "end": true
     },
     {
