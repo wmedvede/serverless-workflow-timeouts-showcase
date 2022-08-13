@@ -21,8 +21,8 @@
     {
       "name": "callbackFunction",
       "metadata": {
-        "interface": "org.kie.kogito.examples.HelloService",
-        "operation": "helloJson",
+        "interface": "org.kie.kogito.examples.ExampleService",
+        "operation": "echoAsJson",
         "type": "service"
       }
     },
@@ -57,7 +57,7 @@
         "functionRef": {
           "refName": "callbackFunction",
           "arguments": {
-            "input" : "$.name"
+            "input" : "\"echoAsJson function was executed in the remote service\""
           }
         }
       },

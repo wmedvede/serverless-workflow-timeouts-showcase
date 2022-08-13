@@ -15,28 +15,18 @@
  */
 package org.kie.kogito.examples;
 
-import java.util.Objects;
-
 import javax.enterprise.context.ApplicationScoped;
 
-import org.eclipse.microprofile.reactive.messaging.Incoming;
-import org.eclipse.microprofile.reactive.messaging.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.cloudevents.CloudEvent;
-import io.smallrye.mutiny.Uni;
-
 @ApplicationScoped
-public class ReactiveDataIndexMockEventReceiver {
+public class ExampleService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ReactiveDataIndexMockEventReceiver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExampleService.class);
 
-    @Incoming("incoming-job-events")
-    public Uni<Void> onCloudEvent(Message<CloudEvent> message) {
-        LOGGER.debug("Received event: {}", message.getPayload());
-        String data = new String(Objects.requireNonNull(message.getPayload().getData()).toBytes());
-        LOGGER.debug("Received event.data: {}", data);
-        return Uni.createFrom().completionStage(message.ack());
+    public String echoAsJson(String input) {
+        LOGGER.info("Executing echoAsJson(\"{}\")", input);
+        return "{\"answer\" : \"" + input + "\"}";
     }
 }
