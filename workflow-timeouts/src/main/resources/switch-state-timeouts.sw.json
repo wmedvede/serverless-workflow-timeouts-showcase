@@ -61,7 +61,7 @@
         "transition": "HandleNoVisaDecision"
       },
       "timeouts": {
-        "eventTimeout": "PT15S"
+        "eventTimeout": "PT30S"
       }
     },
     {
