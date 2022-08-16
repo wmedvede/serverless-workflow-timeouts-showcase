@@ -20,10 +20,13 @@ import javax.enterprise.context.ApplicationScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Helper service with convenient methods to use from the serverless workflows.
+ */
 @ApplicationScoped
-public class ExampleService {
+public class HelperService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExampleService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelperService.class);
 
     public String echoAsJson(String input) {
         LOGGER.info("Executing echoAsJson(\"{}\")", input);
