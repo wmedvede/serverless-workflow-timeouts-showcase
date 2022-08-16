@@ -1,14 +1,14 @@
 {
   "id": "callback_state_timeouts",
   "version": "1.0",
-  "name": "Callback State Timeouts",
+  "name": "Callback State Timeouts Example",
   "description": "Simple process to show the callback state timeout working",
   "start": "PrintStartMessage",
   "events": [
     {
       "name": "callbackEvent",
       "source": "",
-      "type": "callback_state_timeouts_event_type"
+      "type": "callback_state_event_type"
     }
   ],
   "errors": [
