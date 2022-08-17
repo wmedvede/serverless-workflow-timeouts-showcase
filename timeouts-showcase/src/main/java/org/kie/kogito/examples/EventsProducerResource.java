@@ -33,8 +33,6 @@ import javax.ws.rs.core.Response;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.eclipse.microprofile.reactive.messaging.Message;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,14 +42,12 @@ import io.cloudevents.jackson.JsonCloudEventData;
 import io.quarkus.reactivemessaging.http.runtime.OutgoingHttpMetadata;
 
 /**
- * Helper resource to with convenient operations to produce events for the serverless workflows that are waiting for
+ * Helper resource with convenient operations to produce events for the serverless workflows that are waiting for
  * events to arrive.
  */
 @Path("events-producer")
 @ApplicationScoped
-public class HelperEventsProducerResource {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(HelperEventsProducerResource.class);
+public class EventsProducerResource {
 
     /**
      * Event type expected by the switch_state_timeouts sw to approve a visa.

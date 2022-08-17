@@ -13,6 +13,6 @@ public class GreetingResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "Hello from Workflow Timeouts Showcase: " + ZonedDateTime.now();
+        return "Hello from the Timeouts Showcase: " + ZonedDateTime.now();
     }
 }
